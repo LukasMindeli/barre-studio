@@ -192,3 +192,94 @@ a, a:visited, a:hover, a:active{
   10%  { opacity: 0.35; }
   100% { transform: translateY(110vh); opacity: 0; }
 }
+
+.h2{
+  font-family: var(--font-title);
+  letter-spacing: .6px;
+  font-weight: 700;
+}
+
+.smallMuted{
+  font-size: 13px;
+  color: rgba(20,20,24,0.62);
+  font-family: var(--font-body);
+}
+
+.btnLink{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 14px;
+  border-radius: 14px;
+  text-decoration: none;
+  border: 1px solid rgba(20,20,24,0.14);
+  background: rgba(0,0,0,0.04);
+  color: rgba(20,20,24,0.90);
+  font-family: var(--font-body);
+}
+
+.cardTitle{
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.dot{
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(0,0,0,0.18);
+}
+
+.chip{
+  font-size: 12px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(0,0,0,0.10);
+  background: rgba(0,0,0,0.03);
+  color: rgba(20,20,24,0.78);
+  font-family: var(--font-body);
+}
+
+.priceCard{
+  position: relative;
+}
+
+.priceCard.popular{
+  outline: 2px solid rgba(0,0,0,0.12);
+}
+
+.planName{
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: 18px;
+  color: rgba(20,20,24,0.92);
+}
+
+.planBadge{
+  font-size: 12px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(0,0,0,0.12);
+  background: rgba(0,0,0,0.04);
+  color: rgba(20,20,24,0.80);
+  font-family: var(--font-body);
+}
+
+.planPrice{
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: 26px;
+  color: rgba(20,20,24,0.92);
+}
+
+.planList{
+  margin: 0;
+  padding-left: 18px;
+  color: rgba(20,20,24,0.78);
+  font-family: var(--font-body);
+}
+
+.planList li{
+  margin: 6px 0;
+}

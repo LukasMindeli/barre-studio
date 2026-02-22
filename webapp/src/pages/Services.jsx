@@ -43,8 +43,16 @@ export default function Services() {
   return (
     <div className="container" style={{ padding: "22px 0 40px" }}>
       <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-        <h1 className="h1" style={{ fontSize: "clamp(24px, 4vw, 36px)" }}>Все виды услуг</h1>
-        <p className="p">Выбери направление и посмотри описание. Фото подтянутся из локальных файлов.</p>
+        <h1
+          className="h1"
+          style={{ fontSize: "clamp(24px, 4vw, 36px)" }}
+        >
+          Все виды услуг
+        </h1>
+        <p className="p">
+          Выбери направление и посмотри описание. Фото подтянутся из локальных
+          файлов.
+        </p>
       </div>
 
       <div className="grid cols-2" style={{ marginTop: 14 }}>
@@ -63,13 +71,22 @@ export default function Services() {
                 }}
               />
 
-              <div style={{ padding: 16, display: "flex", flexDirection: "column", gap: 10 }}>
+              <div
+                style={{
+                  padding: 16,
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: 10,
+                }}
+              >
                 <div style={{ fontSize: 18, fontWeight: 900 }}>{s.title}</div>
                 <p className="p">{s.desc}</p>
 
                 <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
                   {s.tags.map((t) => (
-                    <span key={t} className="badge">{t}</span>
+                    <span key={t} className="badge">
+                      {t}
+                    </span>
                   ))}
                 </div>
               </div>
