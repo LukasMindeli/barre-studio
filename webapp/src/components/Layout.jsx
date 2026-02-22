@@ -16,35 +16,7 @@ export default function Layout({ children }) {
 
   return (
     <div style={styles.page}>
-      <div className="starsOverlay" aria-hidden="true">
-  {Array.from({ length: 60 }).map((_, i) => (
-    <span
-      key={i}
-      className="fallStar"
-      style={{
-        left: `${Math.random() * 100}%`,
-        animationDuration: `${1.6 + Math.random() * 2.8}s`,
-        animationDelay: `${Math.random() * 2.0}s`,
-        opacity: `${0.18 + Math.random() * 0.35}`,
-        transform: `scale(${0.8 + Math.random() * 1.4})`,
-      }}
-    />
-  ))}
-</div>
-      <header className="starWrap" style={styles.header}>
-  <div className="starField" aria-hidden="true">
-    {Array.from({ length: 26 }).map((_, i) => (
-      <span
-        key={i}
-        className="star"
-        style={{
-          left: `${Math.random() * 100}%`,
-          animationDuration: `${0.9 + Math.random() * 1.6}s`,
-          animationDelay: `${Math.random() * 1.2}s`,
-        }}
-      />
-    ))}
-  </div>
+      <header style={styles.header}>
         <div style={styles.brand}>
           <div style={styles.title}>Barre Studio</div>
           <div style={styles.subtitle}>
@@ -73,7 +45,12 @@ export default function Layout({ children }) {
 
             <nav style={styles.nav}>
               {items.map((it) => (
-                <Link key={it.to} to={it.to} onClick={close} style={styles.navItem}>
+                <Link
+                  key={it.to}
+                  to={it.to}
+                  onClick={close}
+                  style={styles.navItem}
+                >
                   {it.label}
                 </Link>
               ))}
@@ -93,7 +70,7 @@ const styles = {
   page: {
     minHeight: "100vh",
     background: "transparent",
-    color: "#EDEDED",
+    // НЕ задаём фиксированный цвет тут, чтобы сайт управлялся глобальным CSS
   },
   header: {
     position: "sticky",
@@ -108,8 +85,11 @@ const styles = {
     backdropFilter: "blur(10px)",
   },
   brand: { display: "flex", flexDirection: "column", gap: 2 },
-  title: { fontSize: 20, fontWeight: 800, letterSpacing: 0.3 },
-  subtitle: { fontSize: 12, opacity: 0.75 },
+
+  // В хедере оставим светлый текст, чтобы читался на тёмной шапке
+  title: { fontSize: 20, fontWeight: 800, letterSpacing: 0.3, color: "#F5F5F5" },
+  subtitle: { fontSize: 12, opacity: 0.85, color: "rgba(245,245,245,0.75)" },
+
   burger: {
     width: 44,
     height: 44,
@@ -149,23 +129,29 @@ const styles = {
     flexDirection: "column",
     gap: 14,
   },
-  panelTitle: { fontSize: 14, opacity: 0.8, letterSpacing: 0.2 },
+
+  // СВЕТЛЫЙ читаемый текст в меню
+  panelTitle: {
+    fontSize: 14,
+    letterSpacing: 0.2,
+    color: "rgba(255,255,255,0.92)",
+  },
   nav: { display: "flex", flexDirection: "column", gap: 10, marginTop: 6 },
   navItem: {
     padding: "12px 12px",
     borderRadius: 12,
     textDecoration: "none",
-    color: "#EDEDED",
-    border: "1px solid rgba(255,255,255,0.10)",
-    background: "rgba(255,255,255,0.04)",
+    color: "rgba(255,255,255,0.92)",
+    border: "1px solid rgba(255,255,255,0.14)",
+    background: "rgba(255,255,255,0.06)",
   },
   closeBtn: {
     marginTop: "auto",
     padding: "12px 12px",
     borderRadius: 12,
-    border: "1px solid rgba(255,255,255,0.12)",
-    background: "rgba(255,255,255,0.04)",
-    color: "#EDEDED",
+    border: "1px solid rgba(255,255,255,0.14)",
+    background: "rgba(255,255,255,0.06)",
+    color: "rgba(255,255,255,0.92)",
     cursor: "pointer",
   },
 };
