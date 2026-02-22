@@ -101,12 +101,6 @@ export default function Schedule() {
           </div>
         ))}
       </div>
-
-      <div className="glass" style={{ padding: 14, marginTop: 14, color: "var(--muted)" }}>
-        <div style={{ fontSize: 13, lineHeight: 1.6 }}>
-          Когда дойдём до продакшена — я сделаю формат, чтобы ты мог легко менять расписание в одном файле данных.
-        </div>
-      </div>
     </div>
   );
 }

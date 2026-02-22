@@ -53,12 +53,6 @@ export default function Contacts() {
           </div>
         </div>
       </div>
-
-      <div className="glass" style={{ padding: 14, marginTop: 14, color: "var(--muted)" }}>
-        <div style={{ fontSize: 13, lineHeight: 1.6 }}>
-          Потом заменим эти ссылки на твои реальные: телефон, инстаграм, телеграм, адрес и карту.
-        </div>
-      </div>
     </div>
   );
 }
