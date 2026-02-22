@@ -78,14 +78,6 @@ export default function Trainers() {
           );
         })}
       </div>
-
-      <div className="glass" style={{ padding: 14, marginTop: 14, color: "var(--muted)" }}>
-        <div style={{ fontSize: 13, lineHeight: 1.6 }}>
-          Фото лежат в <code style={{ padding: "2px 6px", borderRadius: 8, border: "1px solid rgba(255,255,255,.12)" }}>
-            src/assets/trainers/
-          </code> и называются: <b>anna.jpg, maria.jpg, kate.jpg</b>
-        </div>
-      </div>
     </div>
   );
 }

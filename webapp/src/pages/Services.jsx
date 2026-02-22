@@ -77,19 +77,6 @@ export default function Services() {
           );
         })}
       </div>
-
-      <div className="glass" style={{ padding: 14, marginTop: 14, color: "var(--muted)" }}>
-        <div style={{ fontSize: 13, lineHeight: 1.6 }}>
-          <b style={{ color: "var(--text)" }}>Важно:</b> чтобы появились реальные фото, положи файлы в
-          <code style={{ padding: "2px 6px", borderRadius: 8, marginLeft: 6, border: "1px solid rgba(255,255,255,.12)" }}>
-            src/assets/services/
-          </code>
-          и назови их:
-          <code style={{ padding: "2px 6px", borderRadius: 8, marginLeft: 6, border: "1px solid rgba(255,255,255,.12)" }}>
-            barre.jpg, stretching.jpg, pilates.jpg, functional.jpg
-          </code>
-        </div>
-      </div>
     </div>
   );
 }
