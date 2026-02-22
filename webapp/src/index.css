@@ -56,6 +56,27 @@ a{ color:inherit; }
   backdrop-filter: blur(12px);
 }
 
+/* Light theme INSIDE glass cards (so text is readable on light glass) */
+.glass{
+  color: rgba(20,20,24,.88);
+}
+
+.glass .p{
+  color: rgba(20,20,24,.70);
+}
+
+.glass .badge{
+  color: rgba(20,20,24,.78);
+  border-color: rgba(20,20,24,.14);
+  background: rgba(20,20,24,.06);
+}
+
+.glass .btn{
+  color: rgba(20,20,24,.88);
+  border-color: rgba(20,20,24,.18);
+  background: rgba(20,20,24,.06);
+}
+
 /* ===== Ballet typography (global) ===== */
 
 /* Заголовки — “балетные” */
