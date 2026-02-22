@@ -1,44 +1,45 @@
 :root{
   --bg0:#0b0b10;
   --bg1:#10101a;
+
+  /* glass */
   --card:rgba(255,255,255,.06);
   --line:rgba(255,255,255,.10);
-
-  /* text */
-  --text:#f2f2f6;
-  --muted:rgba(242,242,246,.70);
+  --shadow: 0 20px 80px rgba(0,0,0,.55);
 
   /* accents */
   --accent:#7c5cff;
   --accent2:#00e5ff;
 
-  --shadow: 0 20px 80px rgba(0,0,0,.55);
+  /* ONE typography */
+  --font: "Cormorant Garamond", serif;
 
-  /* fonts */
-  --font-title: "Cormorant Garamond", serif;
-  --font-body: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  /* ONE text color for the whole site */
+  --ink: rgba(18,18,22,.92);
 }
 
 *{ box-sizing:border-box; }
 
-html,body{
+html, body{
   margin:0;
-  color:var(--text);
 
-  /* near-solid + seamless vertical tile */
+  /* one color everywhere */
+  color: var(--ink);
+
+  /* background */
   background-color: var(--bg0);
   background-image: url("./assets/bg-tile.png");
   background-repeat: repeat-y;
   background-position: center top;
   background-size: 1024px auto;
 
-  font-family: var(--font-body);
-  letter-spacing: 0.2px;
+  /* one font everywhere */
+  font-family: var(--font);
+  letter-spacing: .2px;
+}
+
+#root{
+  color: inherit;
 }
 
 a{ color:inherit; }
@@ -48,69 +49,51 @@ a{ color:inherit; }
   margin:0 auto;
 }
 
+/* glass cards */
 .glass{
   background:var(--card);
   border:1px solid var(--line);
   border-radius:18px;
   box-shadow:var(--shadow);
   backdrop-filter: blur(12px);
+
+  /* enforce one color even inside cards */
+  color: inherit;
 }
 
-/* Light theme INSIDE glass cards (so text is readable on light glass) */
-.glass{
-  color: rgba(20,20,24,.88);
-}
-
-.glass .p{
-  color: rgba(20,20,24,.70);
-}
-
-.glass .badge{
-  color: rgba(20,20,24,.78);
-  border-color: rgba(20,20,24,.14);
-  background: rgba(20,20,24,.06);
-}
-
-.glass .btn{
-  color: rgba(20,20,24,.88);
-  border-color: rgba(20,20,24,.18);
-  background: rgba(20,20,24,.06);
-}
-
-/* ===== Ballet typography (global) ===== */
-
-/* Заголовки — “балетные” */
+/* headings */
 h1, h2, .h1{
-  font-family: var(--font-title);
+  font-family: var(--font);
   letter-spacing: 0.8px;
   font-weight: 700;
+  color: inherit;
 }
 
-/* Базовый заголовок проекта */
 .h1{
   font-size: clamp(28px, 4.5vw, 44px);
   margin:0;
 }
 
-/* Обычный текст */
+/* paragraph */
 p, .p{
   margin:0;
-  color:var(--muted);
+  color: inherit;     /* IMPORTANT: no other colors */
   line-height:1.6;
-  font-family: var(--font-body);
+  opacity: .82;       /* softer, but same color */
 }
 
-/* Кнопки */
+/* buttons */
 .btn{
   border:1px solid var(--line);
   background:rgba(255,255,255,.06);
-  color:var(--text);
+  color: inherit;     /* IMPORTANT: no other colors */
   padding:12px 14px;
   border-radius:14px;
   cursor:pointer;
+  opacity: .92;
 }
 
-/* Плашки тегов */
+/* badges */
 .badge{
   display:inline-flex;
   align-items:center;
@@ -119,11 +102,12 @@ p, .p{
   border-radius:999px;
   border:1px solid rgba(255,255,255,.14);
   background:rgba(255,255,255,.06);
-  color:rgba(242,242,246,.85);
+  color: inherit;     /* IMPORTANT: no other colors */
   font-size:12px;
+  opacity: .86;
 }
 
-/* сетки */
+/* grids */
 .grid{
   display:grid;
   gap:14px;
@@ -131,22 +115,4 @@ p, .p{
 @media (min-width: 780px){
   .grid.cols-2{ grid-template-columns: 1fr 1fr; }
   .grid.cols-3{ grid-template-columns: 1fr 1fr 1fr; }
-}
-/* ===== Readability fix: dark text on light cards ===== */
-/* Если твои "glass" блоки реально светлые (как на скрине), делаем текст темным внутри них. */
-.glass{
-  color: rgba(20,20,24,0.90);
-}
-.glass .p{
-  color: rgba(20,20,24,0.68);
-}
-.glass .badge{
-  color: rgba(20,20,24,0.78);
-  border-color: rgba(0,0,0,0.10);
-  background: rgba(0,0,0,0.04);
-}
-.glass .btn{
-  color: rgba(20,20,24,0.88);
-  border-color: rgba(0,0,0,0.12);
-  background: rgba(0,0,0,0.04);
 }
