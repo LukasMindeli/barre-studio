@@ -1,17 +1,9 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import IntroSplash from "./IntroSplash";
 
 export default function Layout({ children }) {
   const [open, setOpen] = useState(false);
-  const [showIntro, setShowIntro] = useState(true);
   const location = useLocation();
-
-  // Показываем интро один раз за вкладку/сессию
-  useEffect(() => {
-    const seen = sessionStorage.getItem("barre_intro_seen");
-    if (seen === "1") setShowIntro(false);
-  }, []);
 
   const close = () => setOpen(false);
 
@@ -24,15 +16,6 @@ export default function Layout({ children }) {
 
   return (
     <div style={styles.page}>
-      {showIntro && (
-        <IntroSplash
-          onDone={() => {
-            sessionStorage.setItem("barre_intro_seen", "1");
-            setShowIntro(false);
-          }}
-        />
-      )}
-
       <header style={styles.header}>
         <div style={styles.brand}>
           <div style={styles.title}>Barre Studio</div>
