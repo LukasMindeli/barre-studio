@@ -86,8 +86,6 @@ const styles = {
     backdropFilter: "blur(10px)",
   },
   brand: { display: "flex", flexDirection: "column", gap: 2 },
-
-  // Хедер остаётся светлым, чтобы читался на тёмной шапке
   title: { fontSize: 20, fontWeight: 800, letterSpacing: 0.3, color: "#F5F5F5" },
   subtitle: { fontSize: 12, opacity: 0.85, color: "rgba(245,245,245,0.75)" },
 
@@ -110,7 +108,9 @@ const styles = {
     background: "rgba(255,255,255,0.9)",
     borderRadius: 999,
   },
+
   main: { padding: 0 },
+
   overlay: {
     position: "fixed",
     inset: 0,
@@ -119,6 +119,7 @@ const styles = {
     justifyContent: "flex-end",
     zIndex: 50,
   },
+
   panel: {
     width: "min(320px, 90vw)",
     height: "100%",
@@ -129,30 +130,44 @@ const styles = {
     display: "flex",
     flexDirection: "column",
     gap: 14,
+
+    // ВАЖНО: принудительно задаём цвет на весь блок меню
+    color: CREAM,
   },
 
-  // КРЕМОВЫЙ текст в меню
   panelTitle: {
     fontSize: 14,
     letterSpacing: 0.2,
     color: CREAM,
+    WebkitTextFillColor: CREAM,
   },
+
   nav: { display: "flex", flexDirection: "column", gap: 10, marginTop: 6 },
+
   navItem: {
     padding: "12px 12px",
     borderRadius: 12,
     textDecoration: "none",
+
+    // железобетонно кремовый
     color: CREAM,
+    WebkitTextFillColor: CREAM,
+
     border: "1px solid rgba(255,255,255,0.14)",
     background: "rgba(255,255,255,0.06)",
   },
+
   closeBtn: {
     marginTop: "auto",
     padding: "12px 12px",
     borderRadius: 12,
+
+    // железобетонно кремовый
+    color: CREAM,
+    WebkitTextFillColor: CREAM,
+
     border: "1px solid rgba(255,255,255,0.14)",
     background: "rgba(255,255,255,0.06)",
-    color: CREAM,
     cursor: "pointer",
   },
 };
