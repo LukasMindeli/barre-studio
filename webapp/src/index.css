@@ -111,3 +111,21 @@ p, .p{
   .grid.cols-2{ grid-template-columns: 1fr 1fr; }
   .grid.cols-3{ grid-template-columns: 1fr 1fr 1fr; }
 }
+/* ===== Readability fix: dark text on light cards ===== */
+/* Если твои "glass" блоки реально светлые (как на скрине), делаем текст темным внутри них. */
+.glass{
+  color: rgba(20,20,24,0.90);
+}
+.glass .p{
+  color: rgba(20,20,24,0.68);
+}
+.glass .badge{
+  color: rgba(20,20,24,0.78);
+  border-color: rgba(0,0,0,0.10);
+  background: rgba(0,0,0,0.04);
+}
+.glass .btn{
+  color: rgba(20,20,24,0.88);
+  border-color: rgba(0,0,0,0.12);
+  background: rgba(0,0,0,0.04);
+}
