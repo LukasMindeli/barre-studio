@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 
+const CREAM = "rgba(255, 243, 214, 0.95)";
+
 export default function Layout({ children }) {
   const [open, setOpen] = useState(false);
   const location = useLocation();
@@ -70,7 +72,6 @@ const styles = {
   page: {
     minHeight: "100vh",
     background: "transparent",
-    // НЕ задаём фиксированный цвет тут, чтобы сайт управлялся глобальным CSS
   },
   header: {
     position: "sticky",
@@ -86,7 +87,7 @@ const styles = {
   },
   brand: { display: "flex", flexDirection: "column", gap: 2 },
 
-  // В хедере оставим светлый текст, чтобы читался на тёмной шапке
+  // Хедер остаётся светлым, чтобы читался на тёмной шапке
   title: { fontSize: 20, fontWeight: 800, letterSpacing: 0.3, color: "#F5F5F5" },
   subtitle: { fontSize: 12, opacity: 0.85, color: "rgba(245,245,245,0.75)" },
 
@@ -130,18 +131,18 @@ const styles = {
     gap: 14,
   },
 
-  // СВЕТЛЫЙ читаемый текст в меню
+  // КРЕМОВЫЙ текст в меню
   panelTitle: {
     fontSize: 14,
     letterSpacing: 0.2,
-    color: "rgba(255,255,255,0.92)",
+    color: CREAM,
   },
   nav: { display: "flex", flexDirection: "column", gap: 10, marginTop: 6 },
   navItem: {
     padding: "12px 12px",
     borderRadius: 12,
     textDecoration: "none",
-    color: "rgba(255,255,255,0.92)",
+    color: CREAM,
     border: "1px solid rgba(255,255,255,0.14)",
     background: "rgba(255,255,255,0.06)",
   },
@@ -151,7 +152,7 @@ const styles = {
     borderRadius: 12,
     border: "1px solid rgba(255,255,255,0.14)",
     background: "rgba(255,255,255,0.06)",
-    color: "rgba(255,255,255,0.92)",
+    color: CREAM,
     cursor: "pointer",
   },
 };
