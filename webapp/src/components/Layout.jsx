@@ -16,6 +16,21 @@ export default function Layout({ children }) {
 
   return (
     <div style={styles.page}>
+      <div className="starsOverlay" aria-hidden="true">
+  {Array.from({ length: 60 }).map((_, i) => (
+    <span
+      key={i}
+      className="fallStar"
+      style={{
+        left: `${Math.random() * 100}%`,
+        animationDuration: `${1.6 + Math.random() * 2.8}s`,
+        animationDelay: `${Math.random() * 2.0}s`,
+        opacity: `${0.18 + Math.random() * 0.35}`,
+        transform: `scale(${0.8 + Math.random() * 1.4})`,
+      }}
+    />
+  ))}
+</div>
       <header className="starWrap" style={styles.header}>
   <div className="starField" aria-hidden="true">
     {Array.from({ length: 26 }).map((_, i) => (
