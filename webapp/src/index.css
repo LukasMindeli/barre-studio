@@ -116,3 +116,13 @@ p, .p{
   .grid.cols-2{ grid-template-columns: 1fr 1fr; }
   .grid.cols-3{ grid-template-columns: 1fr 1fr 1fr; }
 }
+
+/* ===== HARD FORCE: all text is black everywhere ===== */
+html, body, #root, #root *{
+  color: #000 !important;
+}
+
+/* Чтобы ссылки не были синими */
+a, a:visited, a:hover, a:active{
+  color: #000 !important;
+}
