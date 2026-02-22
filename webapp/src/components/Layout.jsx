@@ -16,7 +16,20 @@ export default function Layout({ children }) {
 
   return (
     <div style={styles.page}>
-      <header style={styles.header}>
+      <header className="starWrap" style={styles.header}>
+  <div className="starField" aria-hidden="true">
+    {Array.from({ length: 26 }).map((_, i) => (
+      <span
+        key={i}
+        className="star"
+        style={{
+          left: `${Math.random() * 100}%`,
+          animationDuration: `${0.9 + Math.random() * 1.6}s`,
+          animationDelay: `${Math.random() * 1.2}s`,
+        }}
+      />
+    ))}
+  </div>
         <div style={styles.brand}>
           <div style={styles.title}>Barre Studio</div>
           <div style={styles.subtitle}>
