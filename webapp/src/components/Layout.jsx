@@ -23,12 +23,13 @@ export default function Layout({ children }) {
   }, [location.pathname]);
 
   const items = [
-  { to: "/services", label: "Послуги" },
-  { to: "/pricing", label: "Ціни" },
-  { to: "/trainers", label: "Тренери" },
-  { to: "/schedule", label: "Розклад" },
-  { to: "/contacts", label: "Контакти" },
-];
+    { to: "/", label: "Головна" },
+    { to: "/services", label: "Послуги" },
+    { to: "/pricing", label: "Ціни" },
+    { to: "/trainers", label: "Тренери" },
+    { to: "/schedule", label: "Розклад" },
+    { to: "/contacts", label: "Контакти" },
+  ];
 
   // Убираем любые "указатели". На Home — просто пусто.
   const subTitle = location.pathname === "/" ? "" : "";
@@ -38,13 +39,13 @@ export default function Layout({ children }) {
       <header className="topbar">
         <div className="topbarRow">
           <div>
-  <Link to="/" style={{ textDecoration: "none" }} aria-label="На головну">
-    <div className="brandTitle" style={{ fontSize: 26, cursor: "pointer" }}>
-      Barre Studio
-    </div>
-  </Link>
-  {subTitle ? <div className="brandSub">{subTitle}</div> : null}
-</div>
+            <Link to="/" style={{ textDecoration: "none" }} aria-label="На головну">
+              <div className="brandTitle" style={{ fontSize: 26, cursor: "pointer" }}>
+                Barre Studio
+              </div>
+            </Link>
+            {subTitle ? <div className="brandSub">{subTitle}</div> : null}
+          </div>
 
           <button
             type="button"
