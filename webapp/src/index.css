@@ -1,8 +1,8 @@
 :root{
   /* ===== Ballet palette (soft, bright) ===== */
-  --bgA:#fbf6f0;        /* warm cream */
-  --bgB:#f3e6df;        /* powder */
-  --bgC:#efe0d8;        /* slightly deeper powder */
+  --bgA:#fff7f1;        /* warm cream */
+  --bgB:#f6e3dc;        /* powder */
+  --bgC:#f0d9d2;        /* slightly deeper powder */
 
   /* panels */
   --panel: rgba(255,255,255,.88);
@@ -12,7 +12,7 @@
 
   /* text */
   --ink: rgba(18,14,14,.92);
-  --muted: rgba(18,14,14,.62);
+  --muted: rgba(18,14,14,.72);
 
   /* menu (dark ballet, NOT black) + cream text */
   --menuBg: rgba(46,32,34,.92);      /* warm plum */
@@ -27,8 +27,8 @@
   --font: "Cormorant Garamond", serif;
 
   /* GLOBAL FONT SCALE (a bit bigger everywhere) */
-  --fz: 18px;         /* base text */
-  --fzSmall: 16px;    /* small text */
+  --fz: 20px;         /* base text */
+  --fzSmall: 18px;    /* small text */
   --fzH1: clamp(34px, 5.2vw, 58px);
   --fzH2: clamp(22px, 3.4vw, 32px);
   --fzCardTitle: 20px;
@@ -105,7 +105,7 @@ a{ color: inherit; }
 .p{
   margin: 0;
   color: var(--muted);
-  line-height: 1.65;
+  line-height: 1.75;
   font-size: var(--fz);
 }
 
