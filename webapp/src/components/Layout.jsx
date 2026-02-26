@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import logo from "../assets/logo.png";
 
 export default function Layout({ children }) {
   const location = useLocation();
@@ -38,12 +39,33 @@ export default function Layout({ children }) {
     <>
       <header className="topbar">
         <div className="topbarRow">
-          <div>
-            <Link to="/" style={{ textDecoration: "none" }} aria-label="На головну">
+          <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+            <Link
+              to="/"
+              aria-label="На головну"
+              style={{
+                textDecoration: "none",
+                display: "flex",
+                alignItems: "center",
+                gap: 10,
+              }}
+            >
+              <img
+                src={logo}
+                alt="Barre Studio logo"
+                style={{
+                  width: 28,
+                  height: 28,
+                  objectFit: "contain",
+                  display: "block",
+                }}
+              />
+
               <div className="brandTitle" style={{ fontSize: 26, cursor: "pointer" }}>
                 Barre Studio
               </div>
             </Link>
+
             {subTitle ? <div className="brandSub">{subTitle}</div> : null}
           </div>
 
