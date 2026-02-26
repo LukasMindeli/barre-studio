@@ -5,6 +5,7 @@ const TRAINERS = [
     id: "anna",
     name: "Анна",
     role: "Балет • Barre",
+    image: "anna.jpg",
     desc: "Постановка техніки, постава, легкість і точність рухів. Фокус: лінії тіла, контроль і дисципліна.",
     tags: ["балет", "barre", "постава"],
   },
@@ -12,6 +13,7 @@ const TRAINERS = [
     id: "maria",
     name: "Марія",
     role: "Stretching • Pilates",
+    image: "maria.jpg",
     desc: "М’яка прогресія для гнучкості та контролю. Дихання, мобільність і безпечне укріплення корпусу.",
     tags: ["stretching", "pilates", "мобільність"],
   },
@@ -19,10 +21,19 @@ const TRAINERS = [
     id: "katya",
     name: "Катя",
     role: "Functional",
+    image: "katya.jpg",
     desc: "Функціональні тренування на все тіло: сила, координація й витривалість. Чітко, енергійно, з прогресією.",
     tags: ["functional", "сила", "енергія"],
   },
 ];
+
+function getTrainerImage(file) {
+  try {
+    return new URL(`../assets/trainers/${file}`, import.meta.url).href;
+  } catch {
+    return null;
+  }
+}
 
 export default function Trainers() {
   return (
@@ -48,24 +59,53 @@ export default function Trainers() {
 
       <section style={{ marginTop: 16 }}>
         <div className="grid cols2">
-          {TRAINERS.map((t) => (
-            <div key={t.id} className="panel soft" style={{ padding: 16 }}>
-              <div className="cardTitle">{t.name}</div>
-              <div className="cardMeta">{t.role}</div>
+          {TRAINERS.map((t) => {
+            const img = getTrainerImage(t.image);
 
-              <p className="p" style={{ marginTop: 10 }}>
-                {t.desc}
-              </p>
+            return (
+              <div
+                key={t.id}
+                className="panel soft"
+                style={{
+                  padding: 16,
+                  display: "flex",
+                  gap: 14,
+                  alignItems: "flex-start",
+                }}
+              >
+                {/* Avatar */}
+                <div
+                  style={{
+                    width: 92,
+                    height: 92,
+                    borderRadius: 18,
+                    flex: "0 0 auto",
+                    border: "1px solid rgba(0,0,0,.10)",
+                    background: img
+                      ? `url(${img}) center/cover no-repeat`
+                      : "rgba(0,0,0,.05)",
+                  }}
+                />
 
-              <div className="chips" style={{ marginTop: 12 }}>
-                {t.tags.map((x) => (
-                  <span key={x} className="chip">
-                    {x}
-                  </span>
-                ))}
+                <div style={{ minWidth: 0 }}>
+                  <div className="cardTitle">{t.name}</div>
+                  <div className="cardMeta">{t.role}</div>
+
+                  <p className="p" style={{ marginTop: 10 }}>
+                    {t.desc}
+                  </p>
+
+                  <div className="chips" style={{ marginTop: 12 }}>
+                    {t.tags.map((x) => (
+                      <span key={x} className="chip">
+                        {x}
+                      </span>
+                    ))}
+                  </div>
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </section>
     </div>
