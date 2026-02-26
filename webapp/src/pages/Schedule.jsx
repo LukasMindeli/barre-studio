@@ -1,106 +1,52 @@
+import { TELEGRAM_URL } from "../data/content";
+
 const SCHEDULE = [
-  {
-    day: "Понедельник",
-    items: [
-      { time: "09:00", title: "Barre (Beginner)", coach: "Анна" },
-      { time: "18:30", title: "Stretching", coach: "Мария" },
-    ],
-  },
-  {
-    day: "Вторник",
-    items: [
-      { time: "10:00", title: "Pilates", coach: "Анна" },
-      { time: "19:00", title: "Functional", coach: "Катя" },
-    ],
-  },
-  {
-    day: "Среда",
-    items: [
-      { time: "09:00", title: "Barre", coach: "Анна" },
-      { time: "18:30", title: "Mobility", coach: "Мария" },
-    ],
-  },
-  {
-    day: "Четверг",
-    items: [
-      { time: "10:00", title: "Stretching", coach: "Мария" },
-      { time: "19:00", title: "Pilates", coach: "Анна" },
-    ],
-  },
-  {
-    day: "Пятница",
-    items: [
-      { time: "09:00", title: "Functional", coach: "Катя" },
-      { time: "18:30", title: "Barre (Booty)", coach: "Анна" },
-    ],
-  },
-  {
-    day: "Суббота",
-    items: [
-      { time: "11:00", title: "Stretching (Deep)", coach: "Мария" },
-    ],
-  },
-  {
-    day: "Воскресенье",
-    items: [
-      { time: "12:00", title: "Barre + Stretch", coach: "Анна/Мария" },
-    ],
-  },
+  { day: "Понеділок", slots: ["12:00–14:00", "18:00–22:00"] },
+  { day: "Вівторок", slots: ["17:00–21:00"] },
+  { day: "Середа", slots: ["15:00–21:00"] },
+  { day: "Четвер", slots: ["11:00–12:00", "18:00–22:00"] },
+  { day: "Пʼятниця", slots: ["За записом"] },
+  { day: "Субота", slots: ["10:00–13:00", "20:00–21:00"] },
+  { day: "Неділя", slots: ["10:00–14:00"] },
 ];
 
 export default function Schedule() {
   return (
-    <div className="container" style={{ padding: "22px 0 40px" }}>
-      <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-        <h1 className="h1" style={{ fontSize: "clamp(24px, 4vw, 36px)" }}>Расписание</h1>
-        <p className="p">Пример расписания. Потом заменим на твоё реальное.</p>
-      </div>
+    <div className="container">
+      <section className="panel" style={{ padding: 18 }}>
+        <h1 className="h1" style={{ fontSize: "clamp(26px, 4.2vw, 44px)" }}>
+          Розклад
+        </h1>
 
-      <div style={{ marginTop: 14, display: "flex", flexDirection: "column", gap: 12 }}>
-        {SCHEDULE.map((d) => (
-          <div key={d.day} className="glass" style={{ padding: 14 }}>
-            <div style={{ fontSize: 16, fontWeight: 900, marginBottom: 10 }}>{d.day}</div>
+        <p className="p" style={{ marginTop: 10, maxWidth: 860 }}>
+          Орієнтовні вікна для занять. Точний час узгоджуємо в Telegram під ваш графік і напрям.
+        </p>
 
-            <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-              {d.items.map((it, idx) => (
-                <div
-                  key={idx}
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "space-between",
-                    gap: 12,
-                    padding: "10px 12px",
-                    borderRadius: 14,
-                    border: "1px solid rgba(255,255,255,.10)",
-                    background: "rgba(255,255,255,.04)",
-                  }}
-                >
-                  <div style={{ fontWeight: 900, minWidth: 62 }}>{it.time}</div>
+        <a
+          className="btn btnPrimary"
+          style={{ marginTop: 14 }}
+          href={TELEGRAM_URL}
+          target="_blank"
+          rel="noreferrer"
+        >
+          Записатися в Telegram
+        </a>
+      </section>
 
-                  <div style={{ flex: 1, minWidth: 0 }}>
-                    <div style={{ fontWeight: 800 }}>{it.title}</div>
-                    <div style={{ fontSize: 12, color: "var(--muted)", marginTop: 2 }}>
-                      Тренер: {it.coach}
-                    </div>
-                  </div>
-
-                  <div
-                    style={{
-                      width: 10,
-                      height: 10,
-                      borderRadius: 999,
-                      background: "linear-gradient(90deg, var(--accent), var(--accent2))",
-                      boxShadow: "0 0 18px rgba(0,229,255,.25)",
-                      flex: "0 0 auto",
-                    }}
-                  />
-                </div>
-              ))}
+      <section style={{ marginTop: 16 }}>
+        <div className="grid cols2">
+          {SCHEDULE.map((d) => (
+            <div key={d.day} className="panel soft" style={{ padding: 16 }}>
+              <div className="cardTitle">{d.day}</div>
+              <div style={{ marginTop: 10, display: "flex", flexWrap: "wrap", gap: 10 }}>
+                {d.slots.map((s) => (
+                  <span key={s} className="chip">{s}</span>
+                ))}
+              </div>
             </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+      </section>
     </div>
   );
 }
