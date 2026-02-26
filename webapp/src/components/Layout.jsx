@@ -23,11 +23,12 @@ export default function Layout({ children }) {
   }, [location.pathname]);
 
   const items = [
-    { to: "/services", label: "Послуги" },
-    { to: "/pricing", label: "Ціни" },
-    { to: "/portfolio", label: "Портфоліо" },
-    { to: "/contacts", label: "Контакти" },
-  ];
+  { to: "/services", label: "Послуги" },
+  { to: "/pricing", label: "Ціни" },
+  { to: "/trainers", label: "Тренери" },
+  { to: "/schedule", label: "Розклад" },
+  { to: "/contacts", label: "Контакти" },
+];
 
   // Убираем любые "указатели". На Home — просто пусто.
   const subTitle = location.pathname === "/" ? "" : "";
