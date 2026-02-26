@@ -1,37 +1,6 @@
-const SERVICES = [
-  {
-    id: "barre",
-    title: "Barre",
-    image: "barre.jpg",
-    desc: "Тренировка у станка: сила, тонус, осанка и контроль. Много работы на ноги/ягодицы/кор.",
-    tags: ["тон", "осанка", "кор"],
-  },
-  {
-    id: "stretching",
-    title: "Stretching",
-    image: "stretching.jpg",
-    desc: "Растяжка и мобильность: мягко раскрываем диапазон движений, снимаем зажимы.",
-    tags: ["гибкость", "мобилити"],
-  },
-  {
-    id: "pilates",
-    title: "Pilates",
-    image: "pilates.jpg",
-    desc: "Контроль тела, дыхание и стабилизация. Отлично для спины и укрепления корпуса.",
-    tags: ["спина", "стабилизация"],
-  },
-  {
-    id: "functional",
-    title: "Functional",
-    image: "functional.jpg",
-    desc: "Функциональные связки на всё тело: сила + координация + выносливость.",
-    tags: ["сила", "энергия"],
-  },
-];
+import { TELEGRAM_URL, SERVICES } from "../data/content";
 
 function getServiceImage(file) {
-  // Будет работать, когда файл реально лежит в src/assets/services/
-  // Если файла нет — вернём null и покажем плейсхолдер.
   try {
     return new URL(`../assets/services/${file}`, import.meta.url).href;
   } catch {
@@ -41,59 +10,46 @@ function getServiceImage(file) {
 
 export default function Services() {
   return (
-    <div className="container" style={{ padding: "22px 0 40px" }}>
-      <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-        <h1
-          className="h1"
-          style={{ fontSize: "clamp(24px, 4vw, 36px)" }}
-        >
-          Все виды услуг
-        </h1>
-        <p className="p">
-          Выбери направление и посмотри описание. Фото подтянутся из локальных
-          файлов.
+    <div className="container">
+      <section className="panel" style={{ padding: 18 }}>
+        <h1 className="h1" style={{ fontSize: "clamp(24px, 4vw, 40px)" }}>Послуги</h1>
+        <p className="p" style={{ marginTop: 10 }}>
+          Оберіть напрям — і напишіть у Telegram, щоб узгодити час та формат.
         </p>
-      </div>
 
-      <div className="grid cols-2" style={{ marginTop: 14 }}>
-        {SERVICES.map((s) => {
-          const img = getServiceImage(s.image);
+        <a className="btn btnPrimary" style={{ marginTop: 14 }} href={TELEGRAM_URL} target="_blank" rel="noreferrer">
+          Написати в Telegram
+        </a>
+      </section>
 
-          return (
-            <div key={s.id} className="glass" style={{ overflow: "hidden" }}>
-              <div
-                style={{
-                  height: 160,
-                  background: img
-                    ? `url(${img}) center/cover no-repeat`
-                    : "linear-gradient(135deg, rgba(124,92,255,.22), rgba(0,229,255,.16))",
-                  borderBottom: "1px solid rgba(255,255,255,.10)",
-                }}
-              />
+      <section style={{ marginTop: 16 }}>
+        <div className="grid cols2">
+          {SERVICES.map((s) => {
+            const img = getServiceImage(s.image);
+            return (
+              <div key={s.id} className="panel soft" style={{ padding: 0, overflow: "hidden" }}>
+                <div
+                  style={{
+                    height: 170,
+                    background: img ? `url(${img}) center/cover no-repeat` : "rgba(0,0,0,.03)",
+                    borderBottom: "1px solid rgba(0,0,0,.08)",
+                  }}
+                />
+                <div style={{ padding: 16 }}>
+                  <div className="cardTitle">{s.title}</div>
+                  <div className="cardMeta">{s.desc}</div>
 
-              <div
-                style={{
-                  padding: 16,
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: 10,
-                }}
-              >
-                <div style={{ fontSize: 18, fontWeight: 900 }}>{s.title}</div>
-                <p className="p">{s.desc}</p>
-
-                <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
-                  {s.tags.map((t) => (
-                    <span key={t} className="badge">
-                      {t}
-                    </span>
-                  ))}
+                  <div className="chips" style={{ marginTop: 10 }}>
+                    {s.tags.map((t) => (
+                      <span key={t} className="chip">{t}</span>
+                    ))}
+                  </div>
                 </div>
               </div>
-            </div>
-          );
-        })}
-      </div>
+            );
+          })}
+        </div>
+      </section>
     </div>
   );
 }
