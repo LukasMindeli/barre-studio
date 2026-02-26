@@ -1,83 +1,73 @@
+import { TELEGRAM_URL } from "../data/content";
+
 const TRAINERS = [
   {
     id: "anna",
     name: "Анна",
-    photo: "anna.jpg",
     role: "Балет • Barre",
-    desc: "Постановка техники, осанка, легкость и точность движений. Фокус: линии тела, контроль, эстетика и дисциплина.",
-    tags: ["балет", "barre", "осанка"],
+    desc: "Постановка техніки, постава, легкість і точність рухів. Фокус: лінії тіла, контроль і дисципліна.",
+    tags: ["балет", "barre", "постава"],
   },
   {
     id: "maria",
-    name: "Мария",
-    photo: "maria.jpg",
+    name: "Марія",
     role: "Stretching • Pilates",
-    desc: "Растяжка и пилатес безопасно: дыхание, мягкая прогрессия, мобильность и укрепление корпуса без перегруза.",
-    tags: ["stretching", "pilates", "mobility"],
+    desc: "М’яка прогресія для гнучкості та контролю. Дихання, мобільність і безпечне укріплення корпусу.",
+    tags: ["stretching", "pilates", "мобільність"],
   },
   {
-    id: "kate",
+    id: "katya",
     name: "Катя",
-    photo: "kate.jpg",
-    role: "Функциональный тренинг",
-    desc: "Функциональные тренировки на всё тело: сила, координация и выносливость. Чётко, энергично, с прогрессией.",
-    tags: ["functional", "сила", "энергия"],
+    role: "Functional",
+    desc: "Функціональні тренування на все тіло: сила, координація й витривалість. Чітко, енергійно, з прогресією.",
+    tags: ["functional", "сила", "енергія"],
   },
 ];
 
-function getTrainerPhoto(file) {
-  try {
-    return new URL(`../assets/trainers/${file}`, import.meta.url).href;
-  } catch {
-    return null;
-  }
-}
-
 export default function Trainers() {
   return (
-    <div className="container" style={{ padding: "22px 0 40px" }}>
-      <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-        <h1 className="h1" style={{ fontSize: "clamp(24px, 4vw, 36px)" }}>Тренера</h1>
-        <p className="p">Команда Barre Studio. Фото подтягиваются из локальных файлов.</p>
-      </div>
+    <div className="container">
+      <section className="panel" style={{ padding: 18 }}>
+        <h1 className="h1" style={{ fontSize: "clamp(26px, 4.2vw, 44px)" }}>
+          Тренери
+        </h1>
+        <p className="p" style={{ marginTop: 10, maxWidth: 860 }}>
+          Наша команда. Щоб записатися — напишіть у Telegram і вкажіть напрям та зручний час.
+        </p>
 
-      <div className="grid cols-2" style={{ marginTop: 14 }}>
-        {TRAINERS.map((t) => {
-          const img = getTrainerPhoto(t.photo);
+        <a
+          className="btn btnPrimary"
+          style={{ marginTop: 14 }}
+          href={TELEGRAM_URL}
+          target="_blank"
+          rel="noreferrer"
+        >
+          Написати в Telegram
+        </a>
+      </section>
 
-          return (
-            <div key={t.id} className="glass" style={{ padding: 16, display: "flex", gap: 14 }}>
-              <div
-                style={{
-                  width: 92,
-                  height: 92,
-                  borderRadius: 18,
-                  flex: "0 0 auto",
-                  border: "1px solid rgba(255,255,255,.10)",
-                  background: img
-                    ? `url(${img}) center/cover no-repeat`
-                    : "linear-gradient(135deg, rgba(124,92,255,.20), rgba(0,229,255,.14))",
-                }}
-              />
+      <section style={{ marginTop: 16 }}>
+        <div className="grid cols2">
+          {TRAINERS.map((t) => (
+            <div key={t.id} className="panel soft" style={{ padding: 16 }}>
+              <div className="cardTitle">{t.name}</div>
+              <div className="cardMeta">{t.role}</div>
 
-              <div style={{ display: "flex", flexDirection: "column", gap: 8, minWidth: 0 }}>
-                <div style={{ display: "flex", flexDirection: "column", gap: 2 }}>
-                  <div style={{ fontSize: 18, fontWeight: 900, lineHeight: 1.2 }}>{t.name}</div>
-                  <div style={{ fontSize: 13, color: "var(--muted)" }}>{t.role}</div>
-                </div>
+              <p className="p" style={{ marginTop: 10 }}>
+                {t.desc}
+              </p>
 
-                <p className="p" style={{ marginTop: 2 }}>{t.desc}</p>
-
-                <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
-                  {t.tags.map((tag) => (
-                    <span key={tag} className="badge">{tag}</span>
-                  ))}
-                </div>
+              <div className="chips" style={{ marginTop: 12 }}>
+                {t.tags.map((x) => (
+                  <span key={x} className="chip">
+                    {x}
+                  </span>
+                ))}
               </div>
             </div>
-          );
-        })}
-      </div>
+          ))}
+        </div>
+      </section>
     </div>
   );
 }
