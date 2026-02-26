@@ -37,9 +37,13 @@ export default function Layout({ children }) {
       <header className="topbar">
         <div className="topbarRow">
           <div>
-            <div className="brandTitle">Barre Studio</div>
-            {subTitle ? <div className="brandSub">{subTitle}</div> : null}
-          </div>
+  <Link to="/" style={{ textDecoration: "none" }} aria-label="На головну">
+    <div className="brandTitle" style={{ fontSize: 26, cursor: "pointer" }}>
+      Barre Studio
+    </div>
+  </Link>
+  {subTitle ? <div className="brandSub">{subTitle}</div> : null}
+</div>
 
           <button
             type="button"
