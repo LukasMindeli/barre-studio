@@ -360,3 +360,29 @@ a{ color: inherit; }
   font-size: 16px;
   font-family: var(--fontBody);
 }
+
+/* ===== Topbar tuning for mobile ===== */
+.topbar{
+  padding: 10px 14px;
+}
+
+.topbarRow{
+  align-items: center;
+}
+
+.brandTitle{
+  line-height: 1.05;
+}
+
+@media (max-width: 520px){
+  .pageMain{
+    padding-top: 12px;
+  }
+  .brandTitle{
+    font-size: 26px; /* чуть заметнее */
+  }
+  .burger{
+    width: 44px;
+    height: 44px;
+  }
+}
