@@ -4,7 +4,6 @@ import { Link, useLocation } from "react-router-dom";
 export default function Layout({ children }) {
   const location = useLocation();
 
-  // menu animation states
   const [mounted, setMounted] = useState(false);
   const [active, setActive] = useState(false);
 
@@ -18,7 +17,6 @@ export default function Layout({ children }) {
     setTimeout(() => setMounted(false), 190);
   };
 
-  // close menu on route change
   useEffect(() => {
     if (mounted) closeMenu();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -31,15 +29,16 @@ export default function Layout({ children }) {
     { to: "/contacts", label: "Контакти" },
   ];
 
+  // Убираем любые "указатели". На Home — просто пусто.
+  const subTitle = location.pathname === "/" ? "" : "";
+
   return (
     <>
       <header className="topbar">
         <div className="topbarRow">
           <div>
             <div className="brandTitle">Barre Studio</div>
-            <div className="brandSub">
-              {location.pathname === "/" ? "М’який, читабельний інтерфейс" : "Навігація по сайту"}
-            </div>
+            {subTitle ? <div className="brandSub">{subTitle}</div> : null}
           </div>
 
           <button

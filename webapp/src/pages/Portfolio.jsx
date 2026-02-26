@@ -1,43 +1,27 @@
-import { PORTFOLIO } from "../data/content";
-
-function getImg(file) {
-  try {
-    return new URL(`../assets/services/${file}`, import.meta.url).href;
-  } catch {
-    return null;
-  }
-}
-
 export default function Portfolio() {
+  const items = [
+    { title: "Проєкт 1", desc: "Додамо ваші реальні матеріали (фото/відео/історії) після отримання." },
+    { title: "Проєкт 2", desc: "Оформимо в такому ж балетному стилі: м’яко, чисто, читабельно." },
+    { title: "Проєкт 3", desc: "Можна показати студію, процес, події або результати." },
+  ];
+
   return (
     <div className="container">
       <section className="panel" style={{ padding: 18 }}>
         <h1 className="h1" style={{ fontSize: "clamp(24px, 4vw, 40px)" }}>Портфоліо</h1>
         <p className="p" style={{ marginTop: 10 }}>
-          Прев’ю робіт/фото. Можемо замінити картки на ваші реальні матеріали: фото студії, занять, подій.
+          Цей розділ заповнюється вашими реальними матеріалами. Зараз — акуратні картки-заглушки.
         </p>
       </section>
 
       <section style={{ marginTop: 16 }}>
         <div className="grid cols3">
-          {PORTFOLIO.map((p) => {
-            const img = getImg(p.image);
-            return (
-              <div key={p.id} className="panel soft" style={{ padding: 0, overflow: "hidden" }}>
-                <div
-                  style={{
-                    height: 170,
-                    background: img ? `url(${img}) center/cover no-repeat` : "rgba(0,0,0,.03)",
-                    borderBottom: "1px solid rgba(0,0,0,.08)",
-                  }}
-                />
-                <div style={{ padding: 16 }}>
-                  <div className="cardTitle">{p.title}</div>
-                  <div className="cardMeta">{p.desc}</div>
-                </div>
-              </div>
-            );
-          })}
+          {items.map((x) => (
+            <div key={x.title} className="panel soft" style={{ padding: 16 }}>
+              <div className="cardTitle">{x.title}</div>
+              <div className="cardMeta">{x.desc}</div>
+            </div>
+          ))}
         </div>
       </section>
     </div>
